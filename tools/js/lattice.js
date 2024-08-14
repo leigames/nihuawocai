@@ -1,5 +1,5 @@
 let color_value = "#000000";
-let comm_link = "http://154.8.146.82/nihuawocai/tools/";
+let comm_link = window.location.href;
 let history_colors = [color_value, "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"];
 if (localStorage.getItem("HistoryColor") != null) {
     history_colors = JSON.parse(localStorage.getItem("HistoryColor"));
@@ -333,7 +333,7 @@ function string64to16(num_64) {
 */
 
 function show_link() {
-    let link = comm_link + "lattice_painter.php?" + exportColor();
+    let link = comm_link + "?" + exportColor();
     copyToClipboard(link);
     $("#link-to-this-alert").slideDown(200);
 }
@@ -350,7 +350,7 @@ function captureTable() {
     }
 
     $("#tip").slideDown(200);
-    // navigator.clipboard.writeText(comm_link + "lattice_painter.php?" + exportColor());
+    // navigator.clipboard.writeText(comm_link + "?" + exportColor());
 
 
     // 捕获表格为Canvas  
@@ -410,7 +410,7 @@ function captureTable() {
 }
 
 function save() {
-    let link = comm_link + "lattice_painter.php?" + exportColor();
+    let link = comm_link + "?" + exportColor();
 
     copyToClipboard(link);
 
