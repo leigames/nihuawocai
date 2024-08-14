@@ -60,35 +60,61 @@
     </div>
 
     <div class="container pt-3">
-        <div class="mb-3 mt-3">
-            <label for="num_select" class="form-label">请选择人数：</label>
-            <select name="num" id="num-select" class="form-select">
-                <option value="6">6 人</option>
-                <option value="8">8 人</option>
-                <option value="10">10 人</option>
-                <option value="12">12 人</option>
-                <option value="14">14 人</option>
-                <option value="16">16 人</option>
-                <option value="18">18 人</option>
-                <option value="20">20 人</option>
-                <option value="22">22 人</option>
-                <option value="24">24 人</option>
-                <option value="26">26 人</option>
-                <option value="28">28 人</option>
-                <option value="30">30 人</option>
-            </select>
-        </div>
-        <div class="mb-3 mt-3">
-            <button class="btn btn-primary" onclick="show_seq()">生成</button>
-            <button class="btn btn-primary" onclick="reset()">重置</button>
-        </div>
-    </div>
+        <div class="row align-items-start mb-3 mt-3">
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="use_namelist" onchange="changeNumMode()"></input>
+                    <label class="form-check-label">使用玩家名单（推荐）</label>
+                </div>
 
-    <div class="container pb-3" id="show_output">
-        <div class="card">
-            <div style="border-style: solid; padding: 2%">
-                <div style="display:inline-block; font-family: monospace; padding-right: 2px" id="no"></div>
-                <div style="display:inline-block; font-family: monospace;" id="output">生成的序列将显示在这里</div>
+                <div id="namelist_input" style="display:none">
+                    <label for="namelist" class="form-label">请输入玩家名单，每行一个：</label>
+                    <textarea class="form-control" rows="12" id="namelist" name="text" oninput="updateLengthSelect()"></textarea>
+                </div>
+
+                <div id="num_input">
+                    <label for="num_select" class="form-label">请选择总玩家数：</label>
+                    <select name="num" id="num_select" class="form-select" value="12" onchange="updateLengthSelect()">
+                        <option value="6">6 人</option>
+                        <option value="7">7 人</option>
+                        <option value="8">8 人</option>
+                        <option value="9">9 人</option>
+                        <option value="10">10 人</option>
+                        <option value="11">11 人</option>
+                        <option value="12">12 人</option>
+                        <option value="13">13 人</option>
+                        <option value="14">14 人</option>
+                        <option value="15">15 人</option>
+                        <option value="16">16 人</option>
+                    </select>
+                </div>
+
+                <div id="length_input">
+                    <label for="length_select" class="form-label">请选择每条线路的长度：</label>
+                    <select name="length" id="length_select" class="form-select" value="12">
+                        <option value="6">6 人</option>
+                        <option value="8">8 人</option>
+                        <option value="10">10 人</option>
+                        <option value="12">12 人</option>
+                    </select>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="sort"></input>
+                    <label class="form-check-label">按线路首位排序</label>
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <button class="btn btn-primary" id="showSeq" onclick="showSeq()">生成</button>
+                    <button class="btn btn-primary" id="reset" onclick="reset()">重置</button>
+                </div>
+            </div>
+            <div class="col container pb-3" id="show_output">
+                <div class="card">
+                    <div style="border-style: solid; padding: 2%">
+                        <div style="display:inline-block; font-family: monospace; white-space:pre-line" id="output">生成的序列将显示在这里</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
