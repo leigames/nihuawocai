@@ -1,5 +1,5 @@
 let color_value = "#000000";
-let comm_link = window.location.href;
+let comm_link = window.location.protocol + "//" + window.location.host + window.location.pathname;
 let history_colors = [color_value, "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"];
 if (localStorage.getItem("HistoryColor") != null) {
     history_colors = JSON.parse(localStorage.getItem("HistoryColor"));
